@@ -43,6 +43,10 @@ section:
       description: Street light installation with solar-powered options.
       icon: i-lucide-spotlight
       class: border-l border-default pt-4 pl-4
+    - title: Capacity Building & Engagement
+      description: Symposiums and technical conferences, Engineering workshops and training programs, Community and stakeholder engagement for infrastructure projects. 
+      icon: i-lucide-person-standing
+      class: border-l border-default pt-4 pl-4
 features:
   title: Some of our recent [projects]{.text-primary}
   description: Showcasing our expertise through successful project implementations across Nigeria.

@@ -44,12 +44,11 @@ useSeoMeta({
       <template #title>
         <MDC :value="page.features.title" class="sm:*:leading-11" />
       </template>
-      <UPageColumns>
-        <UPageCard v-for="(feature, i) in page.features.features" :title="feature.title"
-          :description="feature.description" reverse variant="soft">
+      <UPageGrid>
+        <UPageCard v-for="(feature, i) in page.features.features" :title="feature.title" reverse variant="soft">
           <NuxtImg :src="feature.image" :alt="feature.title" />
         </UPageCard>
-      </UPageColumns>
+      </UPageGrid>
     </UPageSection>
 
     <USeparator :ui="{ border: 'border-primary/30' }" />
