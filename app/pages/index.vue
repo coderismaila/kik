@@ -53,6 +53,16 @@ useSeoMeta({
 
     <USeparator :ui="{ border: 'border-primary/30' }" />
 
+    <UPageSection title="Certifications & Partnership">
+      <UPageLogos title="Certified & Trusted by Industry Professionals" marquee>
+        <NuxtImg src="/images/partners/ihs.png" sizes="80" />
+        <NuxtImg src="/images/partners/kedco.png" sizes="120" />
+        <NuxtImg src="/images/partners/nemsa.png" sizes="80" />
+        <NuxtImg src="/images/partners/ke.png" sizes="80" />
+      </UPageLogos>
+    </UPageSection>
+
+
     <UPageCTA v-bind="page.cta" variant="naked" class="overflow-hidden @container">
       <template #title>
         <MDC :value="page.cta.title" />
