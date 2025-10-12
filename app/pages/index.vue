@@ -69,7 +69,7 @@ useSeoMeta({
         <NuxtImg src="/images/partners/cac.png" sizes="80" />
         <NuxtImg src="/images/partners/kedco.png" sizes="120" />
         <NuxtImg src="/images/partners/nemsa.png" sizes="80" />
-        <NuxtImg src="/images/partners/ke.png" sizes="80" />
+        <NuxtImg src="/images/partners/ke.png" sizes="50" />
       </UPageLogos>
     </UPageSection>
 
