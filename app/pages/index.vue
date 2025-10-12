@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData('index', () => queryCollection('content').first())
+const { data: page } = await useAsyncData('index', () => queryCollection('index').first())
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
@@ -27,14 +27,15 @@ useSeoMeta({
       </template>
     </UPageHero>
 
-    <UPageSection :description="page.section.description" :features="page.section.features"
-      :headline="page.section.headline" orientation="horizontal" reverse>
+    <UPageSection v-for="(section, index) in page.sections" :key="index" :description="section.description"
+      :features="section.features" :headline="section.headline" :orientation="section.orientation"
+      :reverse="section.reverse">
       <template #title>
-        <MDC :value="page.section.title" class="sm:*:leading-11" />
+        <MDC :value="section.title" class="sm:*:leading-11" />
       </template>
-      <img :src="page.section.images.desktop" :alt="page.section.title"
+      <img :src="section.images.desktop" :alt="section.title"
         class="hidden lg:block 2xl:hidden left-0 w-full max-w-2xl">
-      <img :src="page.section.images.desktop" :alt="page.section.title"
+      <img :src="section.images.desktop" :alt="section.title"
         class="block lg:hidden 2xl:block 2xl:w-full 2xl:max-w-2xl">
     </UPageSection>
 
@@ -45,8 +46,17 @@ useSeoMeta({
         <MDC :value="page.features.title" class="sm:*:leading-11" />
       </template>
       <UPageGrid>
-        <UPageCard v-for="(feature, i) in page.features.features" :title="feature.title" reverse variant="soft">
+        <UPageCard v-for="(feature, i) in page.features.items" :title="feature.title" reverse variant="soft">
           <NuxtImg :src="feature.image" :alt="feature.title" />
+        </UPageCard>
+        <UPageCard title="Inverter installation at Raven Media, Abuja Office" reverse variant="soft">
+          <video class="rounded-xl" data-v-baf90ddd="" preload="none"
+            poster="https://res.cloudinary.com/hasmos/image/upload/v1760268708/inverter_070_cmodbg.png"
+            :controls="true">
+            <source data-v-baf90ddd=""
+              src="https://res.cloudinary.com/hasmos/video/upload/v1760267271/inverter_abxdfm.mp4"
+              type="video/mp4">
+          </video>
         </UPageCard>
       </UPageGrid>
     </UPageSection>

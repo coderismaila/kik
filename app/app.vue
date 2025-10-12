@@ -17,8 +17,8 @@ useHead({
 });
 
 useSeoMeta({
-  ogImage: "https://ui.nuxt.com/assets/templates/nuxt/landing-light.png",
-  twitterImage: "https://ui.nuxt.com/assets/templates/nuxt/landing-light.png",
+  ogImage: "https://res.cloudinary.com/hasmos/image/upload/v1760269939/kikog_l6yrcp.png",
+  twitterImage: "https://res.cloudinary.com/hasmos/image/upload/v1760269939/kikog_l6yrcp.png",
   twitterCard: "summary_large_image",
 });
 </script>

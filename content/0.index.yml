@@ -1,0 +1,115 @@
+seo:
+  title: KIK Engineering Ltd
+  description: Delivering efficient, reliable, and sustainable engineering services through cutting-edge technology across Nigeria and Africa.
+title: Power Infrastructure & Renewable Energy Solutions
+description: Delivering efficient, reliable, and sustainable engineering services through cutting-edge technology across Nigeria and Africa.
+hero:
+  links:
+    - label: Contact Us
+      icon: i-lucide-phone-outgoing
+      trailing: true
+      color: primary
+      to: /
+      target: _blank
+      size: xl
+    - label: View Projects
+      icon: i-lucide-cable
+      size: xl
+      color: neutral
+      variant: outline
+      to: /
+      target: _blank
+sections:
+  - title: '[Our Services]{.text-primary}'
+    description: Comprehensive engineering solutions across electricity distribution, renewable energy, and power infrastructure.
+    headline: Our Expertise
+    reverse: true
+    orientation: horizontal
+    images:
+      mobile: '/images/lightbulb.svg'
+      desktop: '/images/lightbulb.svg'
+    features:
+      - title: Power Distribution
+        description: Transformer installations and power line construction.
+        icon: i-lucide-utility-pole
+        class: border-l border-primary pl-4
+      - title: Electrical Installations
+        description: Building wiring for residential and commercial properties.
+        icon: i-lucide-unplug
+        class: border-l border-default pt-4 pl-4
+      - title: Renewable Energy
+        description: Solar panel installations and battery storage solutions.
+        icon: i-lucide-battery-plus
+        class: border-l border-default pt-4 pl-4
+      - title: Public Lighting
+        description: Street light installation with solar-powered options.
+        icon: i-lucide-spotlight
+        class: border-l border-default pt-4 pl-4
+      - title: Capacity Building & Engagement
+        description: Symposiums, technical conferences, Engineering workshops and training programs. 
+        icon: i-lucide-person-standing
+        class: border-l border-default pt-4 pl-4
+  - title: '[Why Choose Us]{.text-primary}'
+    description: We combine technical expertise, regulatory compliance, and innovation to deliver dependable and sustainable power solutions.
+    headline: Our Competitive Edge
+    reverse: false
+    orientation: horizontal
+    images:
+      mobile: '/images/handshake.svg'
+      desktop: '/images/handshake.svg'
+    features:
+      - title: Certified Professionals
+        description: Our engineers and technicians are certified experts with years of proven field experience across power distribution and renewable energy projects.
+        icon: i-lucide-badge-check
+        class: border-l border-primary pl-4
+      - title: Regulatory Compliance
+        description: We strictly adhere to Nigerian Electricity Regulatory Commission (NERC) and international engineering standards for all projects.
+        icon: i-lucide-scale
+        class: border-l border-default pt-4 pl-4
+      - title: Timely & Cost-Effective Delivery
+        description: Projects are executed efficiently — on time and within budget — without compromising quality or safety.
+        icon: i-lucide-clock
+        class: border-l border-default pt-4 pl-4
+      - title: Maintenance & After-Sales Support
+        description: We offer reliable post-installation maintenance and technical support to ensure optimal performance and customer satisfaction.
+        icon: i-lucide-headset
+        class: border-l border-default pt-4 pl-4
+      - title: Innovation & Sustainability
+        description: Our solutions emphasize innovation and the integration of clean, renewable energy technologies for a sustainable future.
+        icon: i-lucide-leaf
+        class: border-l border-default pt-4 pl-4
+features:
+  title: Some of our recent [projects]{.text-primary}
+  description: Showcasing our expertise through successful project implementations across Nigeria.
+  items:
+    - title: Installation of 80 Number 50kVA, 11/0.400kV Distribution Transformer for IHS Towers
+      description: Discover your optimal coding hours with real-time AI analysis of your productivity patterns.
+      icon: i-lucide-wand-sparkles
+      image: /images/projects/ihs-rigasa.jpg
+      ui:
+        leading: bg-accented/50 p-2 rounded-md border border-muted border-dashed
+    - title: Installation of 300kVA, 11/0.400kV Distribution Transformer for at NEMA Office Kaduna
+      description: Discover your optimal coding hours with real-time AI analysis of your productivity patterns.
+      icon: i-lucide-wand-sparkles
+      image: /images/projects/nema.jpg
+      ui:
+        leading: bg-accented/50 p-2 rounded-md border border-muted border-dashed
+    - title: Installation of 200kVA, 11/0.415kV for Sambo Saleh, Millennium City Kaduna
+      description: Discover your optimal coding hours with real-time AI analysis of your productivity patterns.
+      icon: i-lucide-wand-sparkles
+      image: /images/projects/sambo.jpg
+      ui:
+        leading: bg-accented/50 p-2 rounded-md border border-muted border-dashed
+cta:
+  title: Powering Reliable Projects, Together
+  description: Trusted by industries and businesses to deliver world-class electrical and renewable energy solutions. Start your project with us today and achieve lasting results.
+  links:
+    - label: Start building
+      to: '#'
+      target: _blank
+      trailingIcon: i-lucide-arrow-right
+    - label: View Projects
+      to: '#'
+      target: _blank
+      variant: subtle
+      icon: i-simple-icons-github

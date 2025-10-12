@@ -1,74 +1,64 @@
 import { defineCollection, z } from '@nuxt/content'
 
-const createEnum = (options: [string, ...string[]]) => z.enum(options)
+const variantEnum = z.enum(['solid', 'outline', 'subtle', 'soft', 'ghost', 'link'])
+const colorEnum = z.enum(['primary', 'secondary', 'neutral', 'error', 'warning', 'success', 'info'])
+const sizeEnum = z.enum(['xs', 'sm', 'md', 'lg', 'xl'])
+const orientationEnum = z.enum(['vertical', 'horizontal'])
 
 const createBaseSchema = () => z.object({
   title: z.string().nonempty(),
   description: z.string().nonempty()
 })
 
+const createFeatureItemSchema = () => createBaseSchema().extend({
+  icon: z.string().nonempty().editor({ input: 'icon' }),
+  image: z.string().optional(),
+})
+
 const createLinkSchema = () => z.object({
   label: z.string().nonempty(),
   to: z.string().nonempty(),
   icon: z.string().optional().editor({ input: 'icon' }),
-  size: createEnum(['xs', 'sm', 'md', 'lg', 'xl']),
+  size: sizeEnum.optional(),
   trailing: z.boolean().optional(),
-  target: createEnum(['_blank', '_self']),
-  color: createEnum(['primary', 'secondary', 'neutral', 'error', 'warning', 'success', 'info']),
-  variant: createEnum(['solid', 'outline', 'subtle', 'soft', 'ghost', 'link'])
+  target: z.string().optional(),
+  color: colorEnum.optional(),
+  variant: variantEnum.optional()
 })
 
-const createFeatureSchema = () => createBaseSchema().extend({
-  icon: z.string().editor({ input: 'icon' }),
-  ui: z.object({
-    leading: z.string().optional()
-  }).editor({ hidden: true })
+const createImageSchema = () => z.object({
+  src: z.string().nonempty().editor({ input: 'media' }),
+  alt: z.string().optional(),
+  loading: z.string().optional(),
+  srcset: z.string().optional()
 })
 
 export const collections = {
-  content: defineCollection({
-    source: 'index.yml',
+  index: defineCollection({
+    source: '0.index.yml',
     type: 'page',
     schema: z.object({
-      hero: z.object({
+      hero: z.object(({
         links: z.array(createLinkSchema())
-      }),
-      section: createBaseSchema().extend({
-        headline: z.string().optional(),
-        images: z.object({
-          mobile: z.string().optional(),
-          desktop: z.string().optional()
-        }),
-        features: z.array(
-          createBaseSchema().extend({
-            icon: z.string().editor({ input: 'icon' })
-          })
-        )
-      }),
+      })),
+      sections: z.array(
+        createBaseSchema().extend({
+          id: z.string().nonempty(),
+          orientation: orientationEnum.optional(),
+          headline: z.string().optional(),
+          reverse: z.boolean().optional(),
+          features: z.array(createFeatureItemSchema()),
+          images: z.object({
+            mobile: z.string().optional(),
+            desktop: z.string().optional()
+          }),
+        })
+      ),
       features: createBaseSchema().extend({
-        features: z.array(createFeatureSchema())
-      }),
-      steps: createBaseSchema().extend({
-        items: z.array(createFeatureSchema().extend({
-          image: z.object({
-            light: z.string().editor({ input: 'media' }),
-            dark: z.string().editor({ input: 'media' })
-          }).optional()
-        }))
-      }),
-      pricing: createBaseSchema().extend({
-        plans: z.array(
-          createBaseSchema().extend({
-            price: z.string().nonempty(),
-            button: createLinkSchema(),
-            features: z.array(z.string().nonempty()),
-            highlight: z.boolean().optional(),
-            billing_period: z.string().nonempty(),
-            billing_cycle: z.string().nonempty()
-          })
-        )
+        items: z.array(createFeatureItemSchema())
       }),
       testimonials: createBaseSchema().extend({
+        headline: z.string().optional(),
         items: z.array(
           z.object({
             quote: z.string().nonempty(),
@@ -76,13 +66,11 @@ export const collections = {
               name: z.string().nonempty(),
               description: z.string().nonempty(),
               to: z.string().nonempty(),
-              avatar: z.object({
-                src: z.string().editor({ input: 'media' }),
-                alt: z.string().optional()
-              }),
-              target: createEnum(['_blank', '_self'])
+              target: z.string().nonempty(),
+              avatar: createImageSchema()
             })
-          }))
+          })
+        )
       }),
       cta: createBaseSchema().extend({
         links: z.array(createLinkSchema())
