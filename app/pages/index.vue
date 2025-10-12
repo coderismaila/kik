@@ -65,11 +65,11 @@ useSeoMeta({
 
     <UPageSection title="Certifications & Partnership">
       <UPageLogos title="Certified & Trusted by Industry Professionals" marquee>
-        <NuxtImg src="/images/partners/ihs.png" sizes="80" />
-        <NuxtImg src="/images/partners/cac.png" sizes="80" />
-        <NuxtImg src="/images/partners/kedco.png" sizes="120" />
-        <NuxtImg src="/images/partners/nemsa.png" sizes="80" />
-        <NuxtImg src="/images/partners/ke.png" sizes="50" />
+        <NuxtImg src="/images/partners/ihs.png" alt="ihs" height="100" />
+        <NuxtImg src="/images/partners/cac.png" alt="cac" height="100" />
+        <NuxtImg src="/images/partners/kedco.png" alt="kedco" height="150" />
+        <NuxtImg src="/images/partners/nemsa.png" alt="nemsa" height="100" />
+        <NuxtImg src="/images/partners/ke.png" alt="kaduna electric" height="90" />
       </UPageLogos>
     </UPageSection>
 
