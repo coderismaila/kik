@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@nuxt/image', '@nuxt/ui', '@nuxt/content'],
+  modules: ['@nuxt/eslint', '@nuxt/image', '@nuxt/ui', '@nuxt/content', 'nuxt-og-image',],
   css: ['~/assets/css/main.css'],
-   content: {
+  content: {
     experimental: { nativeSqlite: true }
   },
   mdc: {
