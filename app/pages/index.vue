@@ -67,7 +67,7 @@ useSeoMeta({
       <UPageLogos title="Certified & Trusted by Industry Professionals" marquee>
         <NuxtImg src="/images/partners/cac.png" alt="cac" height="80" />
         <NuxtImg src="/images/partners/nemsa.png" alt="nemsa" height="80" />
-        <NuxtImg src="/images/partners/ke.png" alt="kaduna electric" height="50" width="50" />
+        <NuxtImg src="/images/partners/ke.png" alt="kaduna electric" width="80" />
         <NuxtImg src="/images/partners/kedco.png" alt="kedco" height="50" />
         <NuxtImg src="/images/partners/ihs.png" alt="ihs" height="50" />
       </UPageLogos>
