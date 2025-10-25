@@ -6,19 +6,17 @@ description: Delivering efficient, reliable, and sustainable engineering service
 hero:
   links:
     - label: Contact Us
-      icon: i-lucide-phone-outgoing
+      icon: i-lucide-mail
       trailing: true
       color: primary
       to: /
-      target: _blank
       size: xl
     - label: View Projects
-      icon: i-lucide-cable
+      icon: i-lucide-briefcase-business
       size: xl
       color: neutral
       variant: outline
-      to: /
-      target: _blank
+      to: /project
 sections:
   - title: '[Our Services]{.text-primary}'
     description: Comprehensive engineering solutions across electricity distribution, renewable energy, and power infrastructure.
@@ -85,19 +83,22 @@ features:
     - title: Installation of 80 Number 50kVA, 11/0.400kV Distribution Transformer for IHS Towers
       description: Discover your optimal coding hours with real-time AI analysis of your productivity patterns.
       icon: i-lucide-wand-sparkles
-      image: /images/projects/ihs-rigasa.jpg
+      to: /project/ihs-towers
+      image: /images/projects/ihs/1.jpg
       ui:
         leading: bg-accented/50 p-2 rounded-md border border-muted border-dashed
     - title: Installation of 300kVA, 11/0.400kV Distribution Transformer for at NEMA Office Kaduna
       description: Discover your optimal coding hours with real-time AI analysis of your productivity patterns.
       icon: i-lucide-wand-sparkles
-      image: /images/projects/nema.jpg
+      to: /project/nema
+      image: /images/projects/nema/nema.jpg
       ui:
         leading: bg-accented/50 p-2 rounded-md border border-muted border-dashed
     - title: Installation of 200kVA, 11/0.415kV for Sambo Saleh, Millennium City Kaduna
       description: Discover your optimal coding hours with real-time AI analysis of your productivity patterns.
       icon: i-lucide-wand-sparkles
-      image: /images/projects/sambo.jpg
+      to: /project/sambo
+      image: /images/projects/sambo/1.jpg
       ui:
         leading: bg-accented/50 p-2 rounded-md border border-muted border-dashed
 cta:
@@ -106,10 +107,8 @@ cta:
   links:
     - label: Start building
       to: '#'
-      target: _blank
       trailingIcon: i-lucide-arrow-right
     - label: View Projects
-      to: '#'
-      target: _blank
+      to: '/project'
       variant: subtle
-      icon: i-simple-icons-github
+      icon: i-lucide-briefcase-business

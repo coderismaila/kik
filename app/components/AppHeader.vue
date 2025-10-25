@@ -4,15 +4,8 @@ const { activeHeadings, updateHeadings } = useScrollspy();
 
 const items = computed(() => [
   {
-    label: "Services",
-    to: "#services",
-    active:
-      activeHeadings.value.includes("services") &&
-      !activeHeadings.value.includes("projects"),
-  },
-  {
-    label: "Projects",
-    to: "#projects",
+    label: "Project",
+    to: "/project",
     active: activeHeadings.value.includes("projects"),
   },
   {

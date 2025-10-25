@@ -76,5 +76,25 @@ export const collections = {
         links: z.array(createLinkSchema())
       })
     })
-  })
+  }),
+  project: defineCollection({
+    source: '1.project.yml',
+    type: 'page'
+  }),
+  projects: defineCollection({
+    source: '1.project/**/*',
+    type: 'page',
+    schema: z.object({
+      image: z.object({ src: z.string().nonempty().editor({ input: 'media' }) }),
+      authors: z.array(
+        z.object({
+          name: z.string().nonempty(),
+          to: z.string().nonempty(),
+          avatar: z.object({ src: z.string().nonempty().editor({ input: 'media' }) })
+        })
+      ),
+      date: z.date(),
+      badge: z.object({ label: z.string().nonempty() })
+    })
+  }),
 }
