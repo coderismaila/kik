@@ -17,11 +17,14 @@
     "nuxt": "^4.2.0",
     "nuxt-og-image": "^5.1.11",
     "vue": "^3.5.21",
-    "vue-router": "^4.5.1"
+    "vue-router": "^4.5.1",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.68",
     "@iconify-json/simple-icons": "^1.2.53",
-    "eslint": "^9.36.0"
-  }
+    "eslint": "^9.36.0",
+    "nuxt-resend": "^0.0.2"
+  },
+  "packageManager": "pnpm@10.30.1+sha512.3590e550d5384caa39bd5c7c739f72270234b2f6059e13018f975c313b1eb9fefcc09714048765d4d9efe961382c312e624572c0420762bdc5d5940cdf9be73a"
 }

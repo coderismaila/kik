@@ -1,4 +1,48 @@
 <script setup lang="ts">
+import type { FormSubmitEvent } from "@nuxt/ui";
+
+import * as z from "zod";
+
+const loading = ref(false);
+
+// Form validation schema
+const contactFormSchema = z.object({
+  name: z.string().min(2, "Enter a valid name"),
+  email: z.email("Please enter a valid email address"),
+  phone: z.string().optional(),
+  company: z.string().optional(),
+  service: z.string("Please select a service"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+});
+
+type ContactFormSchema = z.output<typeof contactFormSchema>;
+
+const state = reactive<Partial<ContactFormSchema>>({
+  name: undefined,
+  email: undefined,
+  phone: undefined,
+  service: undefined,
+  company: undefined,
+  message: undefined,
+});
+
+const toast = useToast();
+
+// Form submission handler
+async function onSubmit(event: FormSubmitEvent<ContactFormSchema>) {
+  loading.value = true;
+
+  const response = await $fetch("/api/contact", { method: "POST", body: event.data });
+  if (response.error) {
+    toast.add({ title: "Error Sending Message", description: "We could not send message, please try again!" });
+    loading.value = false;
+  }
+  toast.add({ title: "Message sent", description: "Thank you for contacting us, we will reply shortly.", color: "success" });
+  console.warn(event.data);
+
+  loading.value = false;
+}
+
 useSeoMeta({
   title: 'Contact Us - KIK Engineering Ltd',
   ogTitle: 'Contact Us - KIK Engineering Ltd',
@@ -26,25 +70,6 @@ const services = [
 
 const isSubmitting = ref(false)
 const submitted = ref(false)
-
-async function onSubmit() {
-  isSubmitting.value = true
-
-  await new Promise(resolve => setTimeout(resolve, 1500))
-
-  isSubmitting.value = false
-  submitted.value = true
-
-  setTimeout(() => {
-    submitted.value = false
-    form.name = ''
-    form.email = ''
-    form.phone = ''
-    form.company = ''
-    form.service = ''
-    form.message = ''
-  }, 5000)
-}
 
 const contactInfo = [
   {
@@ -75,7 +100,7 @@ const contactInfo = [
     label: 'Phone',
     icon: 'i-lucide-phone',
     details: [
-      '+234 XXX XXX XXXX'
+      '+234 803 590 8285'
     ]
   },
   {
@@ -122,21 +147,24 @@ const businessHours = [
             <p class="text-muted">Thank you for contacting us. We'll get back to you within 24 hours.</p>
           </div>
 
-          <UForm v-else :state="form" @submit="onSubmit" class="space-y-5">
+          <UForm v-else :schema="contactFormSchema" :state="form" @submit="onSubmit" class="space-y-5">
             <UFormField label="Full Name" name="name" required>
               <UInput v-model="form.name" placeholder="John Doe" icon="i-lucide-user" size="lg" class="w-full" />
             </UFormField>
 
             <UFormField label="Email Address" name="email" required>
-              <UInput v-model="form.email" type="email" placeholder="john@example.com" icon="i-lucide-mail" size="lg" class="w-full" />
+              <UInput v-model="form.email" type="email" placeholder="john@example.com" icon="i-lucide-mail" size="lg"
+                class="w-full" />
             </UFormField>
 
             <UFormField label="Phone Number" name="phone">
-              <UInput v-model="form.phone" type="tel" placeholder="+234 XXX XXX XXXX" icon="i-lucide-phone" size="lg" class="w-full" />
+              <UInput v-model="form.phone" type="tel" placeholder="+234 803 590 8285" icon="i-lucide-phone" size="lg"
+                class="w-full" />
             </UFormField>
 
             <UFormField label="Company/Organization" name="company">
-              <UInput v-model="form.company" placeholder="Your Company Ltd" icon="i-lucide-building-2" size="lg" class="w-full" />
+              <UInput v-model="form.company" placeholder="Your Company Ltd" icon="i-lucide-building-2" size="lg"
+                class="w-full" />
             </UFormField>
 
             <UFormField label="Service Interested In" name="service">
@@ -161,7 +189,7 @@ const businessHours = [
 
             <div class="grid sm:grid-cols-2 gap-4">
               <div v-for="info in contactInfo" :key="info.label" class="flex gap-3 p-4 rounded-xl bg-default/50">
-                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                   <UIcon :name="info.icon" class="w-4 h-4 text-primary" />
                 </div>
                 <div>
@@ -189,11 +217,7 @@ const businessHours = [
             <UCard class="overflow-hidden" :ui="{ body: 'p-0' }">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1393.1766543195283!2d7.473766555251131!3d9.005748161029441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0c8cfa1b52bb%3A0x41321d501aa1eaf2!2s24%20Ibrahim%20Waziri%20Crescent%20Apo%20Abuja%20Rd%2C%20Gudu%2C%20Abuja%20900110%2C%20Federal%20Capital%20Territory!5e1!3m2!1sen!2sng!4v1771673845970!5m2!1sen!2sng"
-                width="100%" 
-                height="300" 
-                style="border:0;" 
-                allowfullscreen 
-                loading="lazy"
+                width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade">
               </iframe>
             </UCard>
@@ -205,16 +229,18 @@ const businessHours = [
     <USeparator :ui="{ border: 'border-primary/30' }" />
 
     <UPageSection class="py-12 lg:py-16">
-      <UCard class="bg-gradient-to-r from-primary/10 to-primary/5 border-2 border-primary/20 text-center py-10 px-6">
+      <UCard class="bg-linear-to-r from-primary/10 to-primary/5 border-2 border-primary/20 text-center py-10 px-6">
         <h2 class="text-2xl lg:text-3xl font-bold mb-4">Need Emergency <span class="text-primary">Support?</span></h2>
         <p class="text-muted max-w-2xl mx-auto mb-6">
-          Our team is available for urgent electrical and power infrastructure emergencies. Contact us immediately for prompt assistance.
+          Our team is available for urgent electrical and power infrastructure emergencies. Contact us immediately for
+          prompt assistance.
         </p>
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
-          <UButton size="lg" color="error" icon="i-lucide-phone">
+          <UButton block size="lg" color="error" icon="i-lucide-phone" to="tel:+2348035908285">
             Call Emergency Line
           </UButton>
-          <UButton size="lg" variant="outline" color="primary" icon="i-lucide-message-circle">
+          <UButton size="lg" variant="outline" color="primary" icon="i-lucide-message-circle"
+            to="https://wa.me/2348035908285">
             WhatsApp Us
           </UButton>
         </div>
