@@ -13,8 +13,8 @@
     "@nuxt/content": "^3.7.1",
     "@nuxt/eslint": "^1.9.0",
     "@nuxt/image": "^1.11.0",
-    "@nuxt/ui": "^4.0.0",
-    "nuxt": "^4.1.2",
+    "@nuxt/ui": "^4.1.0",
+    "nuxt": "^4.2.0",
     "nuxt-og-image": "^5.1.11",
     "vue": "^3.5.21",
     "vue-router": "^4.5.1"

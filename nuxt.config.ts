@@ -16,6 +16,11 @@ export default defineNuxtConfig({
       ]
     }
   },
+  site: {
+    url: 'https://www.kikengineeringltd.com',
+    name: 'KIK Engineering Ltd.',
+    description: 'KIK Engineering Ltd. provides top-notch engineering solutions tailored to your needs. Our expert team delivers innovative designs and reliable services to ensure your projects succeed.',
+  },
   eslint: {
     config: {
       stylistic: {

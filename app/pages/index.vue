@@ -46,7 +46,7 @@ useSeoMeta({
         <MDC :value="page.features.title" class="sm:*:leading-11" />
       </template>
       <UPageGrid>
-        <UPageCard v-for="(feature, i) in page.features.items" :title="feature.title" reverse variant="soft">
+        <UPageCard v-for="(feature, i) in page.features.items" :title="feature.title" :to="feature.to" reverse variant="soft">
           <NuxtImg :src="feature.image" :alt="feature.title" />
         </UPageCard>
         <UPageCard title="Inverter installation at Raven Media, Abuja Office" reverse variant="soft">

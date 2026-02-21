@@ -13,6 +13,7 @@ const createBaseSchema = () => z.object({
 const createFeatureItemSchema = () => createBaseSchema().extend({
   icon: z.string().nonempty().editor({ input: 'icon' }),
   image: z.string().optional(),
+  to: z.string().optional(),
 })
 
 const createLinkSchema = () => z.object({

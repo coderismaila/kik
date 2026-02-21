@@ -10,14 +10,14 @@ const items = computed(() => [
   },
   {
     label: "About",
-    to: "#about",
+    to: "/about",
     active:
       activeHeadings.value.includes("about") &&
       !activeHeadings.value.includes("projects"),
   },
   {
     label: "Contacts",
-    to: "#contacts",
+    to: "/contact",
     active:
       activeHeadings.value.includes("contacts") &&
       !activeHeadings.value.includes("about"),

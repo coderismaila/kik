@@ -35,7 +35,7 @@ const columns = [
     label: "Contacts",
     children: [
       {
-        label: "No.24 Waziri Ibrahim Crescent,<br/> Apo, Gudu District, Abuja.",
+        label: "No.24 Waziri Ibrahim Crescent, Apo, Gudu District, Abuja.",
         class: 'max-w-xs'
       },
       {

@@ -9,7 +9,7 @@ hero:
       icon: i-lucide-mail
       trailing: true
       color: primary
-      to: /
+      to: /contact
       size: xl
     - label: View Projects
       icon: i-lucide-briefcase-business
@@ -97,7 +97,7 @@ features:
     - title: Installation of 200kVA, 11/0.415kV for Sambo Saleh, Millennium City Kaduna
       description: Discover your optimal coding hours with real-time AI analysis of your productivity patterns.
       icon: i-lucide-wand-sparkles
-      to: /project/sambo
+      to: /project/sambo-saleh
       image: /images/projects/sambo/1.jpg
       ui:
         leading: bg-accented/50 p-2 rounded-md border border-muted border-dashed
