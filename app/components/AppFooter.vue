@@ -22,12 +22,15 @@ const columns = [
     children: [
       {
         label: "Projects",
+        to: "/project"
       },
       {
         label: "About Us",
+        to: "/about"
       },
       {
         label: "Contact Us",
+        to: "/contact"
       },
     ],
   },
