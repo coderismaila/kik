@@ -38,10 +38,52 @@ const values = [
 
 const team = [
   {
-    name: 'Engr. Kamal Yusuf',
+    name: 'Engr. Kamaludeen Ibrahim Kanya',
     role: 'Managing Director',
     image: '/images/kamal.png',
     description: 'Visionary leader with over 12 years in power engineering and infrastructure development.'
+  },
+  {
+    name: 'Engr. Isah Usman',
+    role: 'Chief Operating Officer',
+    image: '/images/user.png',
+    description: 'Operations strategist with expertise in B.Sc, M.Sc Electrical Engineering.'
+  },
+  {
+    name: 'Hauwa Umar',
+    role: 'Chief Marketing & Advertisement',
+    image: '/images/user-female.png',
+    description: 'Marketing strategist with BSc Mass Communication driving brand growth.'
+  },
+  {
+    name: 'Engr. Kabir Garba Jibia',
+    role: 'Chief Electrical Engineering',
+    image: '/images/user.png',
+    description: 'Senior electrical engineer with COREN, MNSE, MNIEEE, MNIPE, NEMSA certifications.'
+  },
+  {
+    name: 'Engr Onimisi Abubakar Mohammed',
+    role: 'Chief Civil Engineering',
+    image: '/images/user.png',
+    description: 'Civil engineering expert with COREN, MNSE, MNICE, HSE 1&2, NEBOSH IGC 3 credentials.'
+  },
+  {
+    name: 'Engr. Muhammad Muhammad Aliyu',
+    role: 'Chief Mechanical Engineering',
+    image: '/images/user.png',
+    description: 'Mechanical engineering leader with COREN and MNSE certifications.'
+  },
+  {
+    name: 'Isma\'il Hassan',
+    role: 'Head IT & GIS',
+    image: '/images/user.png',
+    description: 'Tech expert certified in Azure Development, GIS, and Power BI analytics.'
+  },
+  {
+    name: 'Ibrahim Adamu',
+    role: 'Head Procurement & Quality Assurance',
+    image: '/images/user.png',
+    description: 'Quality assurance specialist with BTech Electrical & Electronics Engineering.'
   }
 ]
 
@@ -229,7 +271,7 @@ const timeline = [
             <UIcon name="i-lucide-users" class="w-16 h-16 text-primary/50 mx-auto mb-4" />
             <h3 class="text-xl font-bold mb-2">Join Our Team</h3>
             <p class="text-muted mb-4">We're always looking for talented engineers and technicians.</p>
-            <UButton variant="outline" color="primary">View Careers</UButton>
+            <UButton disabled variant="outline" color="primary">View Careers</UButton>
           </div>
         </UCard>
       </div>
