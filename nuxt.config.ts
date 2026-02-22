@@ -21,6 +21,11 @@ export default defineNuxtConfig({
     name: 'KIK Engineering Ltd.',
     description: 'KIK Engineering Ltd. provides top-notch engineering solutions tailored to your needs. Our expert team delivers innovative designs and reliable services to ensure your projects succeed.',
   },
+
+  resend: {
+    apiKey: process.env.NUXT_RESEND_API_KEY || ''
+  },
+  
   eslint: {
     config: {
       stylistic: {
