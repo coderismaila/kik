@@ -3,7 +3,8 @@ import type { FormSubmitEvent } from "@nuxt/ui";
 
 import * as z from "zod";
 
-const loading = ref(false);
+const isSubmitting = ref(false)
+const submitted = ref(false)
 
 // Form validation schema
 const contactFormSchema = z.object({
@@ -30,17 +31,17 @@ const toast = useToast();
 
 // Form submission handler
 async function onSubmit(event: FormSubmitEvent<ContactFormSchema>) {
-  loading.value = true;
+  isSubmitting.value = true;
 
   const response = await $fetch("/api/contact", { method: "POST", body: event.data });
   if (response.error) {
     toast.add({ title: "Error Sending Message", description: "We could not send message, please try again!" });
-    loading.value = false;
+    isSubmitting.value = false;
   }
   toast.add({ title: "Message sent", description: "Thank you for contacting us, we will reply shortly.", color: "success" });
-  console.warn(event.data);
 
-  loading.value = false;
+  isSubmitting.value = false;
+  submitted.value = true;
 }
 
 useSeoMeta({
@@ -48,15 +49,6 @@ useSeoMeta({
   ogTitle: 'Contact Us - KIK Engineering Ltd',
   description: 'Get in touch with KIK Engineering Ltd for power infrastructure and renewable energy solutions. Contact us today for inquiries.',
   ogDescription: 'Get in touch with KIK Engineering Ltd for power infrastructure and renewable energy solutions. Contact us today for inquiries.'
-})
-
-const form = reactive({
-  name: '',
-  email: '',
-  phone: '',
-  company: '',
-  service: '',
-  message: ''
 })
 
 const services = [
@@ -67,9 +59,6 @@ const services = [
   'Capacity Building',
   'Other'
 ]
-
-const isSubmitting = ref(false)
-const submitted = ref(false)
 
 const contactInfo = [
   {
@@ -147,33 +136,33 @@ const businessHours = [
             <p class="text-muted">Thank you for contacting us. We'll get back to you within 24 hours.</p>
           </div>
 
-          <UForm v-else :schema="contactFormSchema" :state="form" @submit="onSubmit" class="space-y-5">
+          <UForm v-else :schema="contactFormSchema" :state="state" @submit="onSubmit" class="space-y-5">
             <UFormField label="Full Name" name="name" required>
-              <UInput v-model="form.name" placeholder="John Doe" icon="i-lucide-user" size="lg" class="w-full" />
+              <UInput v-model="state.name" placeholder="John Doe" icon="i-lucide-user" size="lg" class="w-full" />
             </UFormField>
 
             <UFormField label="Email Address" name="email" required>
-              <UInput v-model="form.email" type="email" placeholder="john@example.com" icon="i-lucide-mail" size="lg"
+              <UInput v-model="state.email" type="email" placeholder="john@example.com" icon="i-lucide-mail" size="lg"
                 class="w-full" />
             </UFormField>
 
             <UFormField label="Phone Number" name="phone">
-              <UInput v-model="form.phone" type="tel" placeholder="+234 803 590 8285" icon="i-lucide-phone" size="lg"
+              <UInput v-model="state.phone" type="tel" placeholder="+234 803 590 8285" icon="i-lucide-phone" size="lg"
                 class="w-full" />
             </UFormField>
 
             <UFormField label="Company/Organization" name="company">
-              <UInput v-model="form.company" placeholder="Your Company Ltd" icon="i-lucide-building-2" size="lg"
+              <UInput v-model="state.company" placeholder="Your Company Ltd" icon="i-lucide-building-2" size="lg"
                 class="w-full" />
             </UFormField>
 
             <UFormField label="Service Interested In" name="service">
-              <USelect v-model="form.service" :items="services" placeholder="Select a service"
+              <USelect v-model="state.service" :items="services" placeholder="Select a service"
                 icon="i-lucide-briefcase-business" class="w-full" size="xl" />
             </UFormField>
 
             <UFormField label="Message" name="message" required>
-              <UTextarea v-model="form.message" placeholder="Tell us about your project or inquiry..." :rows="4"
+              <UTextarea v-model="state.message" placeholder="Tell us about your project or inquiry..." :rows="4"
                 autoresize size="lg" class="w-full" />
             </UFormField>
 

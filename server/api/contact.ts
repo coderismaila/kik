@@ -5,8 +5,8 @@ export default defineEventHandler(async (event) => {
   const { name, email, phone, company, service, message } = body;
 
   const response = await emails.send({
-    from: "info@kikengineeringltd.com",
-    to: "info@kikengineeringltd.com",
+    from: "kamaluddeen.ibrahim@kikengineeringltd.com",
+    to: "kamaluddeen.ibrahim@kikengineeringltd.com",
     subject: `New Contact Form Submission - ${service || 'General Inquiry'}`,
     html: `
       <!DOCTYPE html>
