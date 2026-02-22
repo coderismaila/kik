@@ -33,15 +33,15 @@ const toast = useToast();
 async function onSubmit(event: FormSubmitEvent<ContactFormSchema>) {
   isSubmitting.value = true;
 
-  const response = await $fetch("/api/contact", { method: "POST", body: event.data });
-  if (response.error) {
-    toast.add({ title: "Error Sending Message", description: "We could not send message, please try again!" });
+  try {
+    const response = await $fetch("/api/contact", { method: "POST", body: event.data });
+    toast.add({ title: "Message sent", description: "Thank you for contacting us, we will reply shortly.", color: "success" });
+    submitted.value = true;
+  } catch (error) {
+    toast.add({ title: "Error Sending Message", description: "We could not send message, please try again!", color: "error" });
+  } finally {
     isSubmitting.value = false;
   }
-  toast.add({ title: "Message sent", description: "Thank you for contacting us, we will reply shortly.", color: "success" });
-
-  isSubmitting.value = false;
-  submitted.value = true;
 }
 
 useSeoMeta({
@@ -134,6 +134,7 @@ const businessHours = [
             <UIcon name="i-lucide-check-circle" class="w-16 h-16 text-success mx-auto mb-4" />
             <h3 class="text-xl font-bold text-success mb-2">Message Sent!</h3>
             <p class="text-muted">Thank you for contacting us. We'll get back to you within 24 hours.</p>
+            <UButton @click="submitted = false" label="Send another message" class="mt-6" />
           </div>
 
           <UForm v-else :schema="contactFormSchema" :state="state" @submit="onSubmit" class="space-y-5">
